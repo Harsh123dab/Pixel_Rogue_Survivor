@@ -28,7 +28,15 @@ public class Enemy : MonoBehaviour
 
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
         // this sets the new loaction for the bird
+    }//due to fixed update it always keep on happening
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
-//due to fixed update it always keep on happening
+
 
