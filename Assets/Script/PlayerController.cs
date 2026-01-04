@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] private Animator animator;
 
@@ -9,6 +10,19 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float moveSpeed;
     public Vector3 playerMoverDirections;    // Update is called once per frame
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+    }
     void Update()
     {
         float inputX = Input.GetAxisRaw("Horizontal"); //raw bcz to get input in whole number like -1(left) ,1(right) & 0(nothing) no decimals 
@@ -27,7 +41,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("moving", true);
         }
 
-        }
+    }
 
     void FixedUpdate()
     {
@@ -35,3 +49,9 @@ public class PlayerController : MonoBehaviour
     }
 
 }
+
+   
+
+    
+
+
