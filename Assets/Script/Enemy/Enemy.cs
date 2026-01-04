@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
     private Vector3 direction ;
     [SerializeField] private float moveSpeed;
     //Update is called once per frame
+    [SerializeField] private GameObject destroyEffect;//destroy effect for enemy 
+
+    
     void FixedUpdate() 
     {
         //face the player
@@ -35,6 +38,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
+            Instantiate(destroyEffect, transform.position, transform.rotation);
         }
     }
 }
