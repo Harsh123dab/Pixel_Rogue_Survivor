@@ -286,5 +286,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   spriteRenderer: {fileID: 131030957882277893}
   rb: {fileID: 7973083984793573213}
-  moveSpeed: 0.85
+  moveSpeed: 0.95
   destroyEffect: {fileID: 7515982647808382318, guid: 1cb326a2710b3d44cb76b988bcc206e1, type: 3}
