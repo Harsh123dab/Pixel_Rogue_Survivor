@@ -21,25 +21,28 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waves[waveNumber].spawnTimer += Time.deltaTime; //spawn timer increase 
-        if (waves[waveNumber].spawnTimer >= waves[waveNumber].spawnInterval) //spawn check for new enemy 
+        if (PlayerController.Instance.gameObject.activeSelf)
         {
-            waves[waveNumber].spawnTimer = 0; //resets timer 
-            SpawnEnemy(); //call spawn function 
-        }
-         if(waves[waveNumber].spawnedEnemyCount >= waves[waveNumber].enemiesPerWave) //wave complete or not 
-                
-        {
-            waves[waveNumber].spawnedEnemyCount = 0; //reset
-            if (waves[waveNumber].spawnInterval > 0.3f) //increase difficulty option 
+            waves[waveNumber].spawnTimer += Time.deltaTime; //spawn timer increase 
+            if (waves[waveNumber].spawnTimer >= waves[waveNumber].spawnInterval) //spawn check for new enemy 
             {
-                waves[waveNumber].spawnInterval *= .9f;
+                waves[waveNumber].spawnTimer = 0; //resets timer 
+                SpawnEnemy(); //call spawn function 
             }
-            waveNumber++; //next wave 
-        }
-         if (waveNumber >= waves.Count) //loop finish code
-        {
-            waveNumber = 0;
+            if (waves[waveNumber].spawnedEnemyCount >= waves[waveNumber].enemiesPerWave) //wave complete or not 
+
+            {
+                waves[waveNumber].spawnedEnemyCount = 0; //reset
+                if (waves[waveNumber].spawnInterval > 0.3f) //increase difficulty option 
+                {
+                    waves[waveNumber].spawnInterval *= .9f;
+                }
+                waveNumber++; //next wave 
+            }
+            if (waveNumber >= waves.Count) //loop finish code
+            {
+                waveNumber = 0;
+            }
         }
     }
   
