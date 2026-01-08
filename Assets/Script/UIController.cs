@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
     [SerializeField] private Slider playerHealthSlider;
+    [SerializeField] private TMP_Text healthText;
+
 
     void Awake()
     {
@@ -23,6 +26,7 @@ public class UIController : MonoBehaviour
     {
         playerHealthSlider.maxValue = PlayerController.Instance.playerMaxHealth;
         playerHealthSlider.value = PlayerController.Instance.playerHealth;
+        healthText.text = playerHealthSlider.value + "/" + playerHealthSlider.maxValue;
 
     }
 }
