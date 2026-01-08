@@ -61,7 +61,8 @@ public class PlayerController : MonoBehaviour
         UIController.Instance.UpdateHealthSlider();
         if (playerHealth <= 0)
         {
-            gameObject.SetActive(false);    
+            gameObject.SetActive(false);
+            GameManger.Instance.GameOver();
         }
     }
 
